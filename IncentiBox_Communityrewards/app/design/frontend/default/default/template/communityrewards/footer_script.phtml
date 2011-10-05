@@ -1,0 +1,11 @@
+<?php if(Mage::getStoreConfig("communityrewards/communityrewards_settings/active")){ ?>
+<?php $_programeId = Mage::getStoreConfig("communityrewards/communityrewards_settings/program_id"); ?>
+	<?php if($_programeId){?>
+		<script type='text/javascript'>
+			(function() {
+				var iBx = document.createElement('script'); iBx.type = 'text/javascript'; iBx.async = true; iBx.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.incentibox.com/ib.js?program_id=<?php echo $_programeId; ?>'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(iBx);
+			})();
+		</script>
+		<div class='incentibox_static' program_id='<?php echo $_programeId; ?>' style='position: fixed;  top: 40px; right: 0px; z-index:100;'></div>
+	<?php } ?>
+<?php } ?>

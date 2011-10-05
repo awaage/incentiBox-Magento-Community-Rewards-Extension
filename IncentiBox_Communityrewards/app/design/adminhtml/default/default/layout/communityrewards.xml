@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>	
+	<adminhtml_communityrewards_index>
+        <reference name="content">
+			<block type="communityrewards/communityrewards" name="communityrewards_communityrewards"></block>
+        </reference>
+    </adminhtml_communityrewards_index>
+</layout>	

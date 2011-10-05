@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <IncentiBox_Communityrewards>
+            <active>true</active>
+            <codePool>local</codePool>
+        </IncentiBox_Communityrewards>
+    </modules>
+</config>

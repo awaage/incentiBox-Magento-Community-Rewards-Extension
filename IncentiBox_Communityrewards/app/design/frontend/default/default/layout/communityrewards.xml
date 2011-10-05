@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+    <default>
+        <reference name="before_body_end">
+			<block type="core/template" name="incentibox.footer.script" as="incentibox_footer_script" template="communityrewards/footer_script.phtml"/>
+        </reference>
+    </default>
+</layout>

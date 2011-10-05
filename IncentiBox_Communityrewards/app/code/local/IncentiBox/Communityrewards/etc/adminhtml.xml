@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<communityrewards translate="title" module="communityrewards">
+										<title>incentiBox</title>
+										<sort_order>10</sort_order>
+									</communityrewards>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+     <menu>
+         <promo>
+            <children>
+                <communityrewards translate="title" module="communityrewards">
+                    <title>incentiBox Coupons</title>
+                    <action>adminhtml/communityrewards</action>
+                    <!--<depends><module>DevelopersIndia_IncentiBox</module></depends>-->
+                </communityrewards>
+            </children>
+         </promo>
+    </menu>
+</config>
