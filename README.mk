@@ -1,4 +1,5 @@
 Magento social media login & incentiBox community rewards extension
+VERSION 1.0.1
 
 The Magento social media login & incentiBox community rewards extension allows you to create a community rewards (loyalty) program and incentivize your store visitors to promote your brand and your products. The extension will display a widget that enables participants to sign in to your Magento store via Facebook account, and incentivizes your customers and store-visitors to "like" your Facebook page, and share your products with their friends via social media (Facebook, Twitter, Tumblr, and 300+ others). In return, your customers will receive store credit, redeemable only at your store!
 
