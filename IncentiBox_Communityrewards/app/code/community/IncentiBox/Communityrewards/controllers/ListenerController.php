@@ -1,5 +1,5 @@
 <?php
-require_once(Mage::getBaseDir('lib').'/Incentibox/incentibox_api.php');
+require_once(Mage::getBaseDir('lib').'/IncentiBox/incentibox_api.php');
 class IncentiBox_Communityrewards_ListenerController extends Mage_Core_Controller_Front_Action
 {
 	protected function isIncentoboxCouponActive(){
