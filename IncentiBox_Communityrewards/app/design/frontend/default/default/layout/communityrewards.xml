@@ -7,4 +7,10 @@
 			<block type="core/template" name="incentibox.footer.script" as="incentibox_footer_script" template="communityrewards/footer_script.phtml"/>
         </reference>
     </default>
+	
+	<checkout_onepage_success>
+		<reference name="content">
+			<block type="checkout/onepage_success" name="incentibox.communityrewards.success.script" template="communityrewards/checkout/success/script.phtml" after="checkout.success" />
+		</reference>
+	</checkout_onepage_success>
 </layout>

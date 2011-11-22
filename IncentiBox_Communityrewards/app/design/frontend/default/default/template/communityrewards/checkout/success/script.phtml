@@ -1,0 +1,53 @@
+<?php if(Mage::getStoreConfig("communityrewards/communityrewards_settings/active")){ ?>
+	<?php $_programeId = Mage::getStoreConfig("communityrewards/communityrewards_settings/program_id"); ?>
+	<?php if ($this->getOrderId() && $_programeId):
+		$incrementId = $this->getOrderId();
+		$_orderObj = Mage::getModel('sales/order')->loadByIncrementId($incrementId);
+		
+		$total = $_orderObj->getbase_grand_total();
+
+		// Look up the customer's order_id and order_total from DB
+		$ORDER_ID = $incrementId;
+		$ORDER_TOTAL = $total;
+
+		$incentibox_order_info = "incentiboxTracker.add_order_info(" . $ORDER_ID . "," . $ORDER_TOTAL . ");";
+		$incentibox_item_string = "";
+		
+		// Loop through each item in the customer's order to build incentibox_item_string
+		foreach ($_orderObj->getAllItems() as $_item):  
+			$_productId = $_item->getproduct_id();
+			$_productName = $_item->getname();
+			
+			// get category
+			// to get category get product id => get product model -> get product category -> get name of the category
+			$product = Mage::getModel('catalog/product')->load($_item->getproduct_id());
+			$productCategories = $product->getCategoryIds();
+			$categoryName = "";
+			if(isset($productCategories[count($productCategories)-1])){
+				$categoryId = $productCategories[count($productCategories)-1];
+				$categoryName = Mage::getModel('catalog/category')->load($categoryId)->getName();
+			}
+			
+			$_unitPrice = $_item->getprice();
+			$orderedQty = $_item->getqty_ordered();
+			
+			$incentibox_item_string .= "incentiboxTracker.add_item('Product Id [" . addslashes($_productId) . "] Product [" . addslashes($_productName) . "] Category [" . addslashes($categoryName) . "] Unit Price [$" . str_replace(",", "", number_format($_unitPrice, 2)) . "] Quantity [" . $orderedQty . "]'); ";
+		endforeach; ?>
+			<!-- EMBED THIS IN FOOTER OF THE CHECKOUT SUCCESS PAGE -->
+			<script type='text/javascript'>
+					(function() {
+					var iBx = document.createElement('script'); iBx.type = 'text/javascript'; iBx.async = true; iBx.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.incentibox.com/ib_track.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(iBx);
+					 })();
+
+					var iBready = function(){
+							incentiboxTracker.set_program_id('<?php echo $_programeId; ?>');
+							// item details can have $ amount, name, product ID, etc. other relevant info
+							<?php echo $incentibox_item_string; ?>
+							// order id, order total
+							<?php echo $incentibox_order_info; ?>
+							incentiboxTracker.send();
+					};
+			</script>
+	<?php
+	endif; ?>
+<?php } ?>
