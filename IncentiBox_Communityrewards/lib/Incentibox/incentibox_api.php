@@ -51,7 +51,10 @@ $url .= '?'. http_build_query( $params );
 $options[CURLOPT_URL] = $url;
 $options[CURLOPT_PORT] = self::INCENTIBOX_API_PORT;
 $options[CURLOPT_USERAGENT] = $this->get_useragent();
-$options[CURLOPT_FOLLOWLOCATION] = true;
+// follow on only if allowed - 20120221
+if (ini_get('open_basedir') == '' && ini_get('safe_mode' == 'Off')){
+	$options[CURLOPT_FOLLOWLOCATION] = true;
+}       
 $options[CURLOPT_RETURNTRANSFER] = true;
 $options[CURLOPT_TIMEOUT] = (int) $this->get_time_out();
 
