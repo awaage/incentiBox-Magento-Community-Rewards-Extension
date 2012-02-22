@@ -1,6 +1,6 @@
 # Magento social media login & incentiBox community rewards extension
 
-    # VERSION 1.0.7
+    # VERSION 1.0.8
 
 ## Magento Community Extension
 Please note that this extension is available from the Magento Commerce community extension website.
